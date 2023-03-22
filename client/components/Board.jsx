@@ -48,10 +48,10 @@ class Board extends React.Component {
     if (!this.state.isInAnimation) {
       let bottomRow = this.props.boardSize - 1;
 
-      !this.isCellTaken(bottomRow, col) ?
-        this.placeDisc(bottomRow, col, id) :
-        this.getToOpenCell(bottomRow, col, (openRow, openCol) => {
-          this.placeDisc(openRow, openCol, id);
+      !this.isCellTaken(bottomRow, col)
+        ? this.placeDisc(bottomRow, col, id)
+        : this.getToOpenCell(bottomRow, col, (openRow, openCol) => {
+            this.placeDisc(openRow, openCol, id);
         });
     }
   }
@@ -75,9 +75,9 @@ class Board extends React.Component {
       animateVisibility: 'visible'
     });
 
-    this.isCurrentPlayer('R') ?
-      this.setState({ animateColor: 'red' }) :
-      this.setState({ animateColor: 'yellow' });
+    this.isCurrentPlayer('R')
+      ? this.setState({ animateColor: 'red' })
+      : this.setState({ animateColor: 'yellow' });
 
     let interval = setInterval(() => {
       let animatedPos = animateCell.getBoundingClientRect();
@@ -101,9 +101,9 @@ class Board extends React.Component {
         this.setState({ isInAnimation: false });
         clearInterval(interval);
 
-        this.isCurrentPlayer('R') ?
-        newBoard[row][col] = 'R' :
-        newBoard[row][col] = 'Y';
+        this.isCurrentPlayer('R')
+          ? newBoard[row][col] = 'R'
+          : newBoard[row][col] = 'Y';
 
         this.setState({ board: newBoard });
 
@@ -124,9 +124,9 @@ class Board extends React.Component {
 
 
   setWinner(winner) {
-    winner === 'R' ?
-      this.setState({ winner: 'RED' }) :
-      this.setState({ winner: 'YELLOW' });
+    winner === 'R'
+      ? this.setState({ winner: 'RED' })
+      : this.setState({ winner: 'YELLOW' });
   }
 
   handleHover(col) {
@@ -151,9 +151,9 @@ class Board extends React.Component {
   }
 
   toggleTurn() {
-    return this.isCurrentPlayer('R') ?
-      this.setState({ currentTurn: 'Y' }) :
-      this.setState({ currentTurn: 'R' });
+    return this.isCurrentPlayer('R')
+      ? this.setState({ currentTurn: 'Y' })
+      : this.setState({ currentTurn: 'R' });
   }
 
   render() {
